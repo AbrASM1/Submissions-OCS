@@ -1,5 +1,8 @@
 node_modules
-uploads
 .env
-tmp
-exports
+uploads/*
+!uploads/.gitkeep
+exports/*
+!exports/.gitkeep
+tmp/*
+!tmp/.gitkeep
