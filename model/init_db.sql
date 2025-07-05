@@ -1,20 +1,11 @@
--- Create database
-CREATE DATABASE IF NOT EXISTS hackathon_db DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE hackathon_db;
-
--- ----------------------------
--- Table: submissions
--- ----------------------------
+-- init.sql
 CREATE TABLE IF NOT EXISTS submissions (
   id INT AUTO_INCREMENT PRIMARY KEY,
   team_name VARCHAR(255) NOT NULL,
-  note TEXT DEFAULT NULL,
-  submitted_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  note TEXT,
+  submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- ----------------------------
--- Table: submission_files
--- ----------------------------
 CREATE TABLE IF NOT EXISTS submission_files (
   id INT AUTO_INCREMENT PRIMARY KEY,
   submission_id INT NOT NULL,
@@ -24,9 +15,6 @@ CREATE TABLE IF NOT EXISTS submission_files (
   FOREIGN KEY (submission_id) REFERENCES submissions(id) ON DELETE CASCADE
 );
 
--- ----------------------------
--- Table: submission_links
--- ----------------------------
 CREATE TABLE IF NOT EXISTS submission_links (
   id INT AUTO_INCREMENT PRIMARY KEY,
   submission_id INT NOT NULL,
