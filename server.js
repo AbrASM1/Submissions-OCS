@@ -2,14 +2,17 @@ const express = require('express');
 const dotenv = require('dotenv');
 const submissionRoutes = require('./routes/submissionsRoutes');
 const db = require('./model/db')
+const exportRoutes = require('./routes/exportRoutes');
 const app = express();
+const downloadRoutes = require('./routes/downloadRoutes');
 
 dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/api', downloadRoutes);
 app.use('/api', submissionRoutes);
-
+app.use('/api', exportRoutes);
 app.use((req, res, next) => {
   res.setTimeout(30000, () => {
     res.status(408).json({ error: 'Request timed out' });
