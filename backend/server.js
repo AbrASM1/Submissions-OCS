@@ -29,8 +29,8 @@ db.query('SELECT 1', (err) => {
   
     console.log('✅ Database connected successfully');
   
-    app.listen(process.env.PORT || 3001, () => {
-      console.log(`🚀 Server running on http://localhost:${process.env.PORT}`);
+    app.listen(3000, () => {
+      console.log(`🚀 Server running on http://localhost:3000`);
     });
   });
   
